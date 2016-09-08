@@ -1,4 +1,4 @@
-### 21 Slider
+# 21 Slider
 
 Contributors: rogercoathup
 
