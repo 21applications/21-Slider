@@ -72,7 +72,7 @@ class A21_Slider_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
+		wp_enqueue_style( 'flickity-css', plugin_dir_url( __FILE__ ) . '../../bower_components/flickity/dist/flickity.css' );
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/a21-slider-public.css', array(), $this->version, 'all' );
 
 	}
@@ -85,18 +85,12 @@ class A21_Slider_Public {
 	public function enqueue_scripts() {
 
 		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in A21_Slider_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The A21_Slider_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
+		 * Enqueue Flickity and initialise
+		 * @todo Move to solution where script is registered but only enqueued as necessary
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/a21-slider-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( 'flickity-js', plugin_dir_url( __FILE__ ) . '../../bower_components/flickity/dist/flickity.pkgd.js', array( 'jquery'), '2.0', true );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/a21-slider-public.js', array( 'flickity-js' ), $this->version, true );
 
 	}
 
