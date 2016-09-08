@@ -13,9 +13,6 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
  * @package    A21_Slider
  * @subpackage A21_Slider/admin
  * @author     Roger Coathup <roger@21applications.com>

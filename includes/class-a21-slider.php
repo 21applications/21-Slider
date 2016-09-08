@@ -75,6 +75,7 @@ class A21_Slider {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+		$this->define_type_hooks();
 
 	}
 
@@ -118,6 +119,12 @@ class A21_Slider {
 		 * side of the site.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-a21-slider-public.php';
+
+		/**
+		 * The main post type for sliders
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'types/class-a21-slider-slider.php';
+
 
 		$this->loader = new A21_Slider_Loader();
 
@@ -169,6 +176,13 @@ class A21_Slider {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+
+	}
+
+	private function define_type_hooks() {
+
+		$this->loader->add_action( 'init', 'A21_Slider_Slider', 'register_type' );
+		$this->loader->add_action( 'init', 'A21_Slider_Slider', 'register_metaboxes' );
 
 	}
 
