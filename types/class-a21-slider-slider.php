@@ -78,5 +78,5 @@ class A21_Slider_Slider {
 			'id'   => $prefix . 'slider',
 			'type' => 'file_list'
 		) );
-
+  }
 }
