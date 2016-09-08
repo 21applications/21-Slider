@@ -23,8 +23,6 @@ class A21_Slider_Slider {
 
 	public static function register_type() {
 
-		$slides = array(
-
 		$labels = array(
 			'name' => _x( 'Slides', 'post type general name', 'a21-slider'),
 			'singular_name' => _x( 'Slide', 'post type singular name', 'a21-slider'),
