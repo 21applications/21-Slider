@@ -13,9 +13,6 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
  * @package    A21_Slider
  * @subpackage A21_Slider/public
  * @author     Roger Coathup <roger@21applications.com>
@@ -92,6 +89,56 @@ class A21_Slider_Public {
 		wp_enqueue_script( 'flickity-js', plugin_dir_url( __FILE__ ) . '../../bower_components/flickity/dist/flickity.pkgd.js', array( 'jquery'), '2.0', true );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/a21-slider-public.js', array( 'flickity-js' ), $this->version, true );
 
+	}
+
+	/**
+	 * Displays a slider (with or without thumbs below )
+	 * Implementation uses Flickity
+	 *
+	 * @param  int $slider_i
+	 * @return
+	 */
+	public static function display( $slider_id, $size = "standard-slide" ) {
+
+		$thumbs = get_post_meta( $slider_id, '_a21_slider_thumbs', true );
+		$autoplay = get_post_meta( $slider_id, '_a21_slider_autoplay', true );
+		$delay = get_post_meta( $slider_id, '_a21_slider_delay', true ) ? get_post_meta( $slider_id, '_a21_slider_delay', true ) : 6000;
+		$slides = get_post_meta( $slider_id, '_a21_slider_slides', true );
+
+		if ( !is_array( $slides ) ) {
+			return;
+		}
+
+		ob_start();
+
+		$autoplay_data = "data-autoplay = false";
+
+		if ( $autoplay ) {
+			$autoplay_data = "data-autoplay = " . $delay;
+		}
+
+		printf( '<div class="slide-gallery" %s>', $autoplay_data );
+
+		foreach ( $slides as $slide ) {
+
+			$image = wp_get_attachment_image_src( $slide['slide'], $size );
+			printf( '<div class="gallery-cell"><img src="%s" property="image"/></div>', $image[0] );
+		}
+		print( '</div>' );
+
+		// If we are supporting thumbs set them up - flickity as nav for in JS
+		//
+		if ( $thumbs && count( $slides ) > 1 ) {
+
+			print( '<div class="slide-nav">' );
+			foreach ( $slides as $slide ) {
+				$thumbnail = wp_get_attachment_image_src( $slide['slide'] );
+				printf( '<div class="gallery-cell"><img src="%s" /></div>', $thumbnail[0]);
+			}
+			print( '</div>' );
+		}
+
+		echo ob_get_clean();
 	}
 
 }

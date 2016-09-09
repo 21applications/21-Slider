@@ -24,10 +24,10 @@ class A21_Slider_Slider {
 	public static function register_type() {
 
 		$labels = array(
-			'name' => _x( 'Slides', 'post type general name', 'a21-slider'),
-			'singular_name' => _x( 'Slide', 'post type singular name', 'a21-slider'),
+			'name' => _x( 'Sliders', 'post type general name', 'a21-slider'),
+			'singular_name' => _x( 'Slider', 'post type singular name', 'a21-slider'),
 			'add_new' => _x('Add New', 'portfolio item', 'a21-slider'),
-			'add_new_item' => __('Add New Slide', 'a21-slider'),
+			'add_new_item' => __('Add New Slider', 'a21-slider'),
 			'edit_item' => __('Edit', 'a21-slider'),
 			'new_item' => __('New', 'a21-slider'),
 			'view_item' => __('View', 'a21-slider'),
@@ -43,10 +43,10 @@ class A21_Slider_Slider {
 			'publicly_queryable' => true,
 			'show_ui' => true,
 			'query_var' => true,
-			'rewrite' => array('slug' => 'slide'),
+			'rewrite' => array('slug' => 'slider'),
 			'capability_type' => 'post',
 			'hierarchical' => false,
-			'menu_icon' => 'dashicons-slide',
+			'menu_icon' => 'dashicons-images-alt',
 			'has_archive' => true,
 			'supports' => array( 'title', 'excerpt', 'thumbnail'),
 			'taxonomies' => array()
@@ -64,19 +64,32 @@ class A21_Slider_Slider {
 
 		$prefix = '_a21_slider_';
 
-	  $images_box = new_cmb2_box( array(
+	  $slides_box = new_cmb2_box( array(
 	    'id' => $prefix . 'slides',
 	    'title' => __( 'Slides', 'a21-slider' ),
-	    'object_types' => array( 'a21_slides' ),
+	    'object_types' => array( 'a21_slider' ),
 	    'context' => 'normal',
 	    'priority' => 'default',
 	    'show_names' => true
 	  ));
 
-		$images_box->add_field( array(
+		$slides_group = $slides_box->add_field( array(
+    'id'          => $prefix . 'slides',
+    'type'        => 'group',
+    'description' => __( 'Select your slides', 'cmb2' ),
+    'options'     => array(
+        'group_title'   => __( 'Slide {#}', 'cmb2' ),
+        'add_button'    => __( 'Add Another Slide', 'cmb2' ),
+        'remove_button' => __( 'Remove Slide', 'cmb2' ),
+        'sortable'      => true,
+    ),
+) );
+
+
+		$slides_box->add_group_field( $slides_group, array(
 			'name' => __( 'Slide', 'a21-slider' ),
-			'id'   => $prefix . 'slider',
-			'type' => 'file_list'
+			'id'   => $prefix . 'slide',
+			'type' => 'file'
 		) );
   }
 }
