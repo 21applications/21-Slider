@@ -3,11 +3,6 @@
 /**
  * The plugin bootstrap file
  *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
- *
  * @link              https://21applications.com
  * @since             1.0.0
  * @package           A21_Slider
@@ -15,7 +10,7 @@
  * @wordpress-plugin
  * Plugin Name:       21 Slider
  * Plugin URI:        https://github.com/21applications/21-Slider
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       A slider based on Flickity
  * Version:           1.0.0
  * Author:            Roger Coathup
  * Author URI:        https://21applications.com
@@ -29,6 +24,11 @@
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
+
+/**
+ * Load CMB2 and other 3rd party composer libraries
+ */
+require 'vendor/autoload.php';
 
 /**
  * The code that runs during plugin activation.

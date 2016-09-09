@@ -182,7 +182,7 @@ class A21_Slider {
 	private function define_type_hooks() {
 
 		$this->loader->add_action( 'init', 'A21_Slider_Slider', 'register_type' );
-		$this->loader->add_action( 'init', 'A21_Slider_Slider', 'register_metaboxes' );
+		$this->loader->add_action( 'cmb2_admin_init', 'A21_Slider_Slider', 'register_metaboxes' );
 
 	}
 
