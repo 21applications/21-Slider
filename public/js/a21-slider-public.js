@@ -3,14 +3,15 @@
 
 $(function(){
 
-  $('.slide-gallery').flickity({
-    prevNextButtons: false,
-    pageDots: false,
-    autoPlay: $('.slide-gallery').data( 'autoplay' )
+  $('.slider').flickity({
+    prevNextButtons: true,
+    pageDots: true,
+    autoPlay: $('.slider').data( 'autoplay' ),
+		imagesLoaded: true
   });
 
   $('.slide-nav').flickity({
-    asNavFor: '.slide-gallery',
+    asNavFor: '.slider',
     contain: true,
     pageDots: false
   });

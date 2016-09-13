@@ -125,6 +125,12 @@ class A21_Slider {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'types/class-a21-slider-slider.php';
 
+		/**
+		 * The slider shortcode class
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-a21-slider-shortcode.php';
+
+
 
 		$this->loader = new A21_Slider_Loader();
 
@@ -173,10 +179,11 @@ class A21_Slider {
 	private function define_public_hooks() {
 
 		$plugin_public = new A21_Slider_Public( $this->get_plugin_name(), $this->get_version() );
+		$shortcode = new A21_Slider_Shortcode();
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-
+		$this->loader->add_action( 'init', $shortcode, 'add_shortcode' );
 	}
 
 	private function define_type_hooks() {

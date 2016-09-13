@@ -69,7 +69,7 @@ class A21_Slider_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		wp_enqueue_style( 'flickity-css', plugin_dir_url( __FILE__ ) . '../../bower_components/flickity/dist/flickity.css' );
+		wp_enqueue_style( 'flickity-css', plugin_dir_url( __FILE__ ) . '../bower_components/flickity/dist/flickity.css' );
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/a21-slider-public.css', array(), $this->version, 'all' );
 
 	}
@@ -85,8 +85,7 @@ class A21_Slider_Public {
 		 * Enqueue Flickity and initialise
 		 * @todo Move to solution where script is registered but only enqueued as necessary
 		 */
-
-		wp_enqueue_script( 'flickity-js', plugin_dir_url( __FILE__ ) . '../../bower_components/flickity/dist/flickity.pkgd.js', array( 'jquery'), '2.0', true );
+		wp_enqueue_script( 'flickity-js', plugin_dir_url( __FILE__ ) . '../bower_components/flickity/dist/flickity.pkgd.js', array( 'jquery'), '2.0', true );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/a21-slider-public.js', array( 'flickity-js' ), $this->version, true );
 
 	}
@@ -98,7 +97,7 @@ class A21_Slider_Public {
 	 * @param  int $slider_i
 	 * @return
 	 */
-	public static function display( $slider_id, $size = "standard-slide" ) {
+	public static function display( $slider_id, $size = "full" ) {
 
 		$thumbs = get_post_meta( $slider_id, '_a21_slider_thumbs', true );
 		$autoplay = get_post_meta( $slider_id, '_a21_slider_autoplay', true );
@@ -109,21 +108,26 @@ class A21_Slider_Public {
 			return;
 		}
 
-		ob_start();
-
 		$autoplay_data = "data-autoplay = false";
 
 		if ( $autoplay ) {
 			$autoplay_data = "data-autoplay = " . $delay;
 		}
 
-		printf( '<div class="slide-gallery" %s>', $autoplay_data );
+		printf( '<div class="slider" %s>', $autoplay_data );
 
 		foreach ( $slides as $slide ) {
 
-			$image = wp_get_attachment_image_src( $slide['slide'], $size );
-			printf( '<div class="gallery-cell"><img src="%s" property="image"/></div>', $image[0] );
+			$image = wp_get_attachment_image_src( $slide['_a21_slider_slide_id'], $size );
+			printf( '<div class="slide"><div class="slide-wrapper"><img src="%s" property="image"/>', $image[0] );
+
+			if ( $slide['_a21_slider_text'] != '' ) {
+				printf( '<div class="text %s" style="color: %s;">%s</div>', $slide['_a21_slider_position'], $slide['_a21_slider_colour'], $slide['_a21_slider_text'] );
+			}
+
+			print( '</div></div>' );
 		}
+
 		print( '</div>' );
 
 		// If we are supporting thumbs set them up - flickity as nav for in JS
@@ -132,13 +136,12 @@ class A21_Slider_Public {
 
 			print( '<div class="slide-nav">' );
 			foreach ( $slides as $slide ) {
-				$thumbnail = wp_get_attachment_image_src( $slide['slide'] );
-				printf( '<div class="gallery-cell"><img src="%s" /></div>', $thumbnail[0]);
+				$thumbnail = wp_get_attachment_image_src( $slide['_a21_slider_slide_id'] );
+				printf( '<div class="slide"><img src="%s" /></div>', $thumbnail[0]);
 			}
 			print( '</div>' );
 		}
 
-		echo ob_get_clean();
 	}
 
 }
