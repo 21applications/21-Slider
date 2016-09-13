@@ -109,7 +109,7 @@ class A21_Slider_Slider {
 				'centre-left' => __( 'Centre left', 'a21-slider' ),
 				'centre-centre' => __( 'Centre centre', 'a21-slider' ),
 				'centre-right' => __( 'Centre right', 'a21-slider' ),
-				'bottom-right' => __( 'Bottom right', 'a21-slider' ),
+				'bottom-left' => __( 'Bottom left', 'a21-slider' ),
 				'bottom-centre' => __( 'Bottom centre', 'a21-slider' ),
 				'bottom-right' => __( 'Bottom right', 'a21-slider' ),
 			)
