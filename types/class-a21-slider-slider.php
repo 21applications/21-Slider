@@ -48,7 +48,7 @@ class A21_Slider_Slider {
 			'hierarchical' => false,
 			'menu_icon' => 'dashicons-images-alt',
 			'has_archive' => true,
-			'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail'),
+			'supports' => array( 'title', 'excerpt', 'thumbnail'),
 			'taxonomies' => array()
 		);
 
