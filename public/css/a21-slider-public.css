@@ -10,6 +10,8 @@ div.slider {
       position: relative; }
       div.slider div.slide .slide-wrapper .text {
         position: absolute; }
+        div.slider div.slide .slide-wrapper .text a {
+          color: inherit; }
         div.slider div.slide .slide-wrapper .text.top-left {
           top: 15%;
           left: 10%; }

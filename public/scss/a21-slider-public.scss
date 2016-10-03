@@ -38,6 +38,10 @@ div.slider {
 
         position: absolute;
 
+        a {
+          color: inherit;
+        }
+
         &.top-left {
           top: 15%;
           left: 10%;
