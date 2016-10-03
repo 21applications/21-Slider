@@ -118,14 +118,29 @@ class A21_Slider_Public {
 
 		foreach ( $slides as $slide ) {
 
+			$link = isset( $slide['_a21_slider_link'] ) ? $slide['_a21_slider_link'] : false;
+
 			$image = wp_get_attachment_image_src( $slide['_a21_slider_slide_id'], $size );
-			printf( '<div class="slide"><div class="slide-wrapper"><img src="%s" property="image"/>', $image[0] );
+
+
+
+			print( '<div class="slide"><div class="slide-wrapper">' );
+
+			if ( $link ) {
+				printf( '<a href="%s">', $link );
+			}
+			printf( '<img src="%s" property="image"/>', $image[0] );
 
 			if ( $slide['_a21_slider_text'] != '' ) {
 				printf( '<div class="text %s" style="color: %s;">%s</div>', $slide['_a21_slider_position'] ? $slide['_a21_slider_position'] : 'top-left' , $slide['_a21_slider_colour'] ? $slide['_a21_slider_colour'] : '#fff', $slide['_a21_slider_text'] );
 			}
 
+			if ( $link ) {
+				printf( '</a>');
+			}
+
 			print( '</div></div>' );
+
 		}
 
 		print( '</div>' );

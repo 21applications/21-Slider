@@ -15,7 +15,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Displays a WordPress slider based on the Flickity javascript library
 
-## Description 
+## Description
 
 
 
@@ -28,3 +28,6 @@ Displays a WordPress slider based on the Flickity javascript library
 
 
 == Changelog ==
+
+v1.0 -- anchor colour consistent with text color
+          link support on slide

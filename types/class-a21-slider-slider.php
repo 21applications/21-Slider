@@ -121,5 +121,11 @@ class A21_Slider_Slider {
 	    'type'    => 'colorpicker',
 	    'default' => '#ffffff',
 		) );
+
+		$slides_box->add_group_field( $slides_group, array(
+			'name'    => __( 'Link', 'a21-slider' ),
+			'id'      => $prefix . 'link',
+			'type'    => 'text_url',
+		) );
   }
 }
