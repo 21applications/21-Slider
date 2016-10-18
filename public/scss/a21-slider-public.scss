@@ -18,6 +18,10 @@
   transform: translate(-50%, -50%);
 }
 
+.a21-slider {
+  margin-bottom: 16px;
+}
+
 div.slider {
 
   width: 100%;
@@ -96,7 +100,7 @@ div.slider {
 }
 
 div.slide-nav {
-  margin-top: rem-calc(20);
+  margin-top: 10px;
   .flickity-prev-next-button {
     background: none;
   }
@@ -104,14 +108,13 @@ div.slide-nav {
   div.slide {
     width: 100px;
     height: 100px;
-    padding: rem-calc(10);
 
     &:not(:first-of-type) {
-      margin-left: rem-calc(10);
+      margin-left: 5px;
     }
 
     &:not(:last-of-type) {
-      margin-right: rem-calc(10);
+      margin-right: 5px;
     }
   }
 }

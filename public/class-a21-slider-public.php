@@ -101,7 +101,7 @@ class A21_Slider_Public {
 
 		$thumbs = get_post_meta( $slider_id, '_a21_slider_thumbs', true );
 		$autoplay = get_post_meta( $slider_id, '_a21_slider_autoplay', true );
-		$delay = get_post_meta( $slider_id, '_a21_slider_delay', true ) ? get_post_meta( $slider_id, '_a21_slider_delay', true ) : 6000;
+		$delay = get_post_meta( $slider_id, '_a21_slider_delay', true ) ? intval( get_post_meta( $slider_id, '_a21_slider_delay', true ) ) : 6000;
 		$slides = get_post_meta( $slider_id, '_a21_slider_slides', true );
 
 		if ( !is_array( $slides ) ) {
@@ -110,7 +110,7 @@ class A21_Slider_Public {
 
 		$autoplay_data = "data-autoplay = false";
 
-		if ( $autoplay ) {
+		if ( $autoplay == 'yes' ) {
 			$autoplay_data = "data-autoplay = " . $delay;
 		}
 
@@ -147,7 +147,7 @@ class A21_Slider_Public {
 
 		// If we are supporting thumbs set them up - flickity as nav for in JS
 		//
-		if ( $thumbs && count( $slides ) > 1 ) {
+		if ( ( $thumbs == 'yes' ) && count( $slides ) > 1 ) {
 
 			print( '<div class="slide-nav">' );
 			foreach ( $slides as $slide ) {

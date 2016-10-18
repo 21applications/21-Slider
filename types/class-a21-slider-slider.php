@@ -64,14 +64,52 @@ class A21_Slider_Slider {
 
 		$prefix = '_a21_slider_';
 
-	  $slides_box = new_cmb2_box( array(
-	    'id' => $prefix . 'slides',
-	    'title' => __( 'Slides', 'a21-slider' ),
+	  $settings_box = new_cmb2_box( array(
+	    'id' => $prefix . 'settings',
+	    'title' => __( 'Settings', 'a21-slider' ),
 	    'object_types' => array( 'a21_slider' ),
 	    'context' => 'normal',
 	    'priority' => 'default',
 	    'show_names' => true
 	  ));
+
+		$settings_box->add_field( array(
+			'name' => 'autoplay',
+			'id' => $prefix . 'autoplay',
+			'type' => 'radio_inline',
+			'options' => array(
+				'no' => __( 'No', 'a21-slider' ),
+				'yes' => __( 'Yes', 'a21-slider' )
+			),
+			'default' => 'no'
+		));
+
+		$settings_box->add_field( array(
+			'name' => 'Autoplay delay between slides in milliseconds',
+			'id' => $prefix . 'delay',
+			'type' => 'text_small',
+			'default' => '6000'
+		));
+
+		$settings_box->add_field( array(
+			'name' => 'thumbs',
+			'id' => $prefix . 'thumbs',
+			'type' => 'radio_inline',
+			'options' => array(
+				'no' => __( 'No', 'a21-slider' ),
+				'yes' => __( 'Yes', 'a21-slider' )
+			),
+			'default' => 'no'
+		));
+
+		$slides_box = new_cmb2_box( array(
+			'id' => $prefix . 'slides',
+			'title' => __( 'Slides', 'a21-slider' ),
+			'object_types' => array( 'a21_slider' ),
+			'context' => 'normal',
+			'priority' => 'default',
+			'show_names' => true
+		));
 
 		$slides_group = $slides_box->add_field( array(
 	    'id'          => $prefix . 'slides',
