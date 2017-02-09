@@ -39,6 +39,7 @@ class A21_Slider_Shortcode {
 
 		$defaults = array(
 	    'slider_id' => '8',
+			'slide_size' => 'slide'
 		);
 
 		$options = shortcode_atts( $defaults, $attr );
@@ -55,7 +56,7 @@ class A21_Slider_Shortcode {
     <div class="a21-slider">
 
       <?php
-      A21_Slider_Public::display( $options['slider_id'] );
+      A21_Slider_Public::display( $options['slider_id'], $options['slide_size'] );
       ?>
 
     </div>
@@ -104,6 +105,13 @@ class A21_Slider_Shortcode {
   						'type' => 'select',
               'options' => $slider_options
   					),
+						'attrs' => array(
+							array(
+								'attr' => 'slide_size',
+								'label' => __( 'Slider', 'a21-slider' ),
+								'type' => 'text',
+							),
+						),
   				),
   			)
   		);

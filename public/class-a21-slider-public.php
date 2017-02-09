@@ -131,7 +131,7 @@ class A21_Slider_Public {
 			}
 			printf( '<img src="%s" property="image"/>', $image[0] );
 
-			if ( $slide['_a21_slider_text'] != '' ) {
+			if ( isset( $slide['_a21_slider_text'] ) && $slide['_a21_slider_text'] != '' ) {
 				printf( '<div class="text %s" style="color: %s;">%s</div>', $slide['_a21_slider_position'] ? $slide['_a21_slider_position'] : 'top-left' , $slide['_a21_slider_colour'] ? $slide['_a21_slider_colour'] : '#fff', $slide['_a21_slider_text'] );
 			}
 
