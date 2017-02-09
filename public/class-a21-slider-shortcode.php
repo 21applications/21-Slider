@@ -107,7 +107,7 @@ class A21_Slider_Shortcode {
   					),
 						array(
 							'attr' => 'slide_size',
-							'label' => __( 'Slider', 'a21-slider' ),
+							'label' => __( 'Slide size', 'a21-slider' ),
 							'type' => 'text',
 						),
   				),
