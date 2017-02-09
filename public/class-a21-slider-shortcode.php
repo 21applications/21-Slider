@@ -105,12 +105,10 @@ class A21_Slider_Shortcode {
   						'type' => 'select',
               'options' => $slider_options
   					),
-						'attrs' => array(
-							array(
-								'attr' => 'slide_size',
-								'label' => __( 'Slider', 'a21-slider' ),
-								'type' => 'text',
-							),
+						array(
+							'attr' => 'slide_size',
+							'label' => __( 'Slider', 'a21-slider' ),
+							'type' => 'text',
 						),
   				),
   			)
